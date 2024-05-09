@@ -1,0 +1,94 @@
+
+package lectura_escritura;
+
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+
+
+/**
+ *
+ * @author alumno
+ */
+public class lecturaEscrituraV2 {
+    public static void main(String[] args) {
+        // Ruta del fichero
+        String rutaFichero = ".\\src\\lectura_escritura\\prueba.txt";
+        
+        // ArrayList para almacenar el contenido del fichero
+        ArrayList<String> lista = new ArrayList<>();
+        
+        // Primero, leemos y mostramos el contenido del fichero
+        System.out.println("\nContenido del fichero:");
+        File fichero = new File(rutaFichero);
+        try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+                lista.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        // Mostramos el contenido del ArrayList por pantalla
+        System.out.println("\nContenido del ArrayList:");
+        for (String linea : lista) {
+            System.out.println(linea);
+        }
+
+        // Pedir datos
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nIntroduce un nuevo dato:");
+        String dato = sc.nextLine();
+        sc.close();
+        
+        // Añadir Dato
+        lista.add(dato);
+        
+        // Imprimir ArrayList
+        Iterator<String> imprimir = lista.iterator();
+        while(imprimir.hasNext()){
+            imprimir.next();
+        }
+        System.out.println("ArrayList con dato nuevo");
+        System.out.println(lista);
+
+        // Finalmente, escribimos el dato al final del fichero sin sobreescribir
+        FileWriter fw = null;
+        PrintWriter pw = null;
+        
+        try {
+            fw = new FileWriter(rutaFichero, true);
+            pw = new PrintWriter(fw);
+            
+            pw.println(dato); //Retorno de carro
+            pw.flush();
+            
+            System.out.println("\nSe ha añadido el dato al fichero.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{ // Haya excepción o no asegurarse de que se cierra el archivo.
+            try{
+                if(null != fw)
+                    fw.close();
+            } catch (Exception e2){
+                e2.printStackTrace();
+            }
+        }
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// Este mismo ejercicio pero que lo guarde de forma ordenada descendente, una vez la lista este ordenada, guardarla y sobrescribir en el fichero

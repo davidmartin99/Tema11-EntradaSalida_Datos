@@ -1,0 +1,8 @@
+María::Escobar::1969-03-13::2023-04-12::Directora::56000.0
+Sara::Gonzalez::1980-05-02::1999-06-03::Secretaria::25000.0
+David::Martin::1999-03-12::2021-03-12::auxiliar::40000.0
+Marcos::Romero::1998-02-19::2024-04-15::Administrativo::30000.0
+Alejandro::Ruperez::1998-03-12::2008-05-14::Ingeniero::50000.0
+Elena::Sanchez::1990-09-03::2010-11-02::TecnicoFP::30000.0
+Juan::Torres::1960-01-01::1980-05-24::Jefe::60000.0
+pepe::lopez::1998-02-12::2007-05-12::coordinador::30440.0
